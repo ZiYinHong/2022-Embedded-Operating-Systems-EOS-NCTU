@@ -14,6 +14,7 @@
 + lab3-簡易計算機
 
 + lab4-簡易名字跑馬燈
+https://user-images.githubusercontent.com/44540162/174522115-8cd22922-e9ff-4066-8711-7b76ebe25a15.mp4
 
 + lab5-東方快車
 
