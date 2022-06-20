@@ -43,8 +43,12 @@ homework demand html pages are in each hw folder
   socket, thread, mutex, signal.<br>
   https://youtu.be/kF2AtskDHwA
 
-+ **Group Final project**
-  貪吃蛇
++ **Group Final project**<br>
+  (Tks to group members)<br>
+  貪吃蛇<br>
+  Single PXA : https://youtu.be/ma4zzYwQmOg<br>
+  PC-PXA : https://youtu.be/n1_dDcL3OYE <br>
+  PC-PC : https://youtu.be/j7Csimsz_0k <br>
 
 =================================================================
 ### Environment & Equipments
