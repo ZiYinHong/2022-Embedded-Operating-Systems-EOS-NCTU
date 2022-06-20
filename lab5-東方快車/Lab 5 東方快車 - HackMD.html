@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="csrf-token" content="IKYuJVgI-r2yJ8VUssv-VBhMKpB7QKM9BTW4">
+    
+    
+    <meta name="description" content="  # Lab 5 東方快車  {%youtube DWT6cSDs9is %}  ## I. Introduction    請在 VM 上撰寫一隻Socket程式。在 VM 上會先將 server">
+    
+    <title>Lab 5 東方快車 - HackMD</title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+	<link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+    
+<script nonce="fda7981f-7127-4e87-9138-8cc98985d4aa">
+  window.domain = 'hackmd.io'
+  window.urlpath = ''
+  window.debug = false
+  window.version = '1.3.0'
+  window.brand = 'HackMD'
+
+  
+  window.NOTE_ID = 'X1EaRHCGQKGpg9MvokfK0g'
+  
+
+  window.GOOGLE_API_KEY = 'AIzaSyCjSrqWHhmWJnoI7JlD88XDSaBgiKbaenA'
+  window.GOOGLE_CLIENT_ID = '911617723593-drikdibvvn63slfd6kbqigo8ql1no55s.apps.googleusercontent.com'
+  window.DROPBOX_APP_KEY = 'rdoizrlnkuha23r'
+  
+  window.PLANTUML_SERVER = 'https://ptuml.hackmd.io'
+
+  window.ASSET_URL = 'https://assets.hackmd.io'
+
+  window.USER_CAN_CREATE_TEAM = true
+  window.USER_CAN_DELETE_ACCOUNT = true
+  window.USER_DELETE_ACCOUNT_VIA_EMAIL = true
+  window.PAYMENT_ENABLED = true
+  window.PAYMENT_PROMOTION_BANNER_ENABLED = true
+  window.GITHUB_SYNC_ENABLED = true
+  window.GITLAB_SYNC_ENABLED = false
+  window.GITLAB_SYNC_BASE_URL = ''
+  window.VCS_SYNC_MODE = 'github'
+  window.VCS_PROVIDER_NAME = 'GitHub'
+  window.FREE_TEAM_NUM = 20
+  window.FREE_TEAM_MEMBER_NUM = 3
+  window.FREE_PUBLIC_TEAM_NUM = 10
+  
+  window.EE_SITE_ENABLE = false
+  window.EE_SITE_NAME = 'false'
+  window.EE_SITE_LINK = 'false'
+  window.EESITE_INFO = false
+  window.ENTERPRISE_DISCOVERY_ENABLE = false
+  window.ENTERPRISE_DISCOVERY_TEAM = true
+  window.ENTERPRISE_DISCOVERY_NOTE = true
+  window.ENTERPRISE_DISCOVERY_VIEW_PERMISSION = 'guest'
+  
+  window.ALLOW_ANONYMOUS = true
+  window.ALLOW_ANONYMOUS_EDIT = false
+  window.PUBLIC_OVERVIEW = false
+  window.INTERNAL_PUBLIC_OVERVIEW = false
+  window.FULL_TEXT_SEARCH_ENABLE = false
+  window.ALGOLIA_SEARCH_ENABLE = true
+  window.MARKETING_EMAIL_ENABLE = true
+  
+  window.API_MANAGEMENT_UI_ENABLE = true
+  window.FEEDBACK_UI_ENABLE = true
+
+  
+  window.SHOW_HOT_NOTES = false
+  
+
+  
+  window.HOT_NOTES_TIME_TYPE = 'week'
+  
+
+  
+  window.SHOW_OVERVIEW = true
+  
+
+  
+  window.MENTIONS = {}
+  
+
+  
+  window.MENTION_ANCHORS = []
+  
+
+  
+  window.COMMENT_ANCHORS = []
+  
+
+  
+  window.IS_OWNER = false
+  
+
+  
+  window.IS_TEAM_ADMIN = false
+  
+
+  
+
+  
+  window.USER_PROFILE = {"name":"ZiYinHong","userpath":"yAVGfncYRQK-fndhvcM47w","photo":"https://avatars.githubusercontent.com/u/44540162?s=96","userid":"c805467e-7718-4502-be7e-7761bdc338ef"}
+  
+
+  
+  window.VERSION_TIME = '1605781955208'
+  
+
+  
+  window.canEdit = false
+  
+
+  
+  window.canWriteComment = false
+  
+</script>
+
+
+    
+<!-- Google Tag Manager -->
+<script nonce="fda7981f-7127-4e87-9138-8cc98985d4aa">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KLW9Z3');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+
+
+
+<meta property="fb:app_id" content="1436904003272070">
+
+
+    <meta name="twitter:image:src" content="https://avatars.githubusercontent.com/u/22985279?s=400" />
+
+
+<meta name="twitter:site" content="@hackmdio" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Lab 5 東方快車 - HackMD" />
+
+
+    <meta name="twitter:description" content="  # Lab 5 東方快車  {%youtube DWT6cSDs9is %}  ## I. Introduction    請在 VM 上撰寫一隻Socket程式。在 VM 上會先將 server" />
+
+
+
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/22985279?s=400" />
+
+
+<meta property="og:site_name" content="HackMD" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Lab 5 東方快車 - HackMD" />
+
+
+    <meta property="og:description" content="  # Lab 5 東方快車  {%youtube DWT6cSDs9is %}  ## I. Introduction    請在 VM 上撰寫一隻Socket程式。在 VM 上會先將 server" />
+
+
+    <link rel="stylesheet" href='https://assets.hackmd.io/build/emojify.js/dist/css/basic/emojify.min.css'>
+     <link href="https://assets.hackmd.io/build/font-vendor.f71b2dd20d2cd4c87735.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/common-vendor.1233bc7a27f833ea4984.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/pretty-vendor.125d4ded35ba0a2fa5e9.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/pretty.bc90fddd83f36f2a76c9.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+<![endif]-->
+
+</head>
+
+<body style="display:none;">
+    <div class="ui-infobar container-fluid unselectable hidden-print">
+        <div class="row">
+            <div class="col-xs-12 ui-infobar-inner">
+                <div class="ui-infobar__user-info">
+                    <ul class="list-inline">
+                        <li>
+                            
+                                <span class="ui-lastchangeuser" data-profile="bxYQcvjiTOa4Zir7H1zlxg">&thinsp;<a class="ui-user-icon small" style="background-image: url(https://lh3.googleusercontent.com/a-/AOh14GjXER82lo1kf--CYyYxWjTGQMn2M4xBN2EwzH6RPA);" target="_blank"></a></span>
+                            
+                            &nbsp;<span class="text-uppercase ui-status-lastchange"></span>
+                            <span class="ui-lastchange text-uppercase" data-createtime="Sun Apr 12 2020 04:29:29 GMT+0000 (Coordinated Universal Time)" data-updatetime="Thu Nov 19 2020 10:32:35 GMT+0000 (Coordinated Universal Time)"></span>
+                        </li>
+                        
+                            <li>
+                                <span class="ui-owner" data-profile="shoulderhu">
+                                    &thinsp;<a class="ui-user-icon small" style="background-image: url(https://avatars.githubusercontent.com/u/22985279?s=96);" target="_blank"></a>
+                                    &nbsp;<span class="text-uppercase">擁有這篇筆記</span>
+                                </span>
+                            </li>
+                        
+                        
+                        <li>
+                            <span class="ui-more-info hmd-dn" data-toggle="popover">
+                                &thinsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
+
+                                <div class="more-info-raw hmd-dn">
+                                    <span class="ui-published-note note-status-row hmd-dn">
+                                        <i class="fa fa-globe" aria-hidden="true" style="margin-top: 1px;"></i>
+                                        公開筆記
+                                    </span>
+
+                                    <span class="ui-connectedGithub note-status-row hmd-dn">
+                                        <i class="fa fa-20 ui-connectedGithubIcon fa-github"></i>
+
+                                        <span>與 GitHub 同步</span>
+
+                                        <br>
+
+                                        <a class="file-path" target="_blank"></a>
+                                    </span>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hmd-text-right ui-infobar__actions">
+                    <ul class="list-inline">
+                        <li>
+                            
+                                <span class="community-button ui-like hidden-xs "  data-toggle="tooltip" data-placement="bottom" title="讚賞"><i class="fa fa-fw"></i><span class="text">讚賞</span><span class="count"></span></span>
+                                <span class="community-button ui-bookmark  hidden-xs" data-toggle="tooltip" data-placement="bottom" title="收藏"><i class="fa fa-fw"></i><span class="text"><span class="bookmark-label">收藏</span><span class="bookmarked-label">已收藏</span></span></span>
+                                
+                                    <div class="ui-notification dropdown ">
+                                        <span id="notificationLabel" class="ui--subscribed hidden-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <div  data-no-email class="ui-notification-status community-button" data-toggle="tooltip" data-placement="bottom" title="訂閱">
+                                                <i class="fa fa-fw fa-bell"></i><span class="text">已訂閱<i class="fa fa-fw fa-angle-down"></i><i class="fa fa-fw fa-angle-up"></i></span>
+                                            </div>
+                                        </span>
+                                        <ul class="dropdown-menu" aria-labelledby="notificationLabel">
+                                            <li class="ui-notification-watch notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-bell fa-fw"></i><div class="info"><div class="title">所有通知</div><div class="description">當有任何變更時將會收到通知</div></div></li>
+                                            <li class="ui-notification-mention notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-at fa-fw"></i><div class="info"><div class="title">提及我</div><div class="description">當有人提及我時才會收到通知</div></div></li>
+                                            <li class="divider"></li>
+                                            <!--
+                                                <li class="ui-notification-list notification-menu-item"><span><a href="#"><i class="fa fa-list-ul fa-fw"></i>我的訂閱列表</a></span></li>
+                                            -->
+                                            <li class="ui-notification-unsubscribe notification-menu-item"><i class="fa fa-bell-slash-o fa-fw"></i>取消訂閱</li>
+                                        </ul>
+                                        <span class="ui-notification-subscribe community-button hidden-xs"><i class="fa fa-fw fa-bell-o"></i><span class="text">訂閱</span></span>
+                                    </div>
+                                
+                            
+                        </li>
+                        
+                    </ul>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Markdown rendered container -->
+    <div id="doc" class="container-fluid markdown-body" data-hard-breaks="true">---
+tags: EOS
+---
+
+# Lab 5 東方快車
+
+{%youtube DWT6cSDs9is %}
+
+## I. Introduction
+   請在 VM 上撰寫一隻Socket程式。在 VM 上會先將 server 程式執行起來，等待 client 程式來做連線。當連線建立之後，server 會將列車的 ASCII art，透過 socket 傳給 client 端，於是在 client 端 terminal 上就會看見一台列車從右到左急駛而過。
+
+## II. Specification
+* Server (**自行撰寫**)
+    * 建立 socket server，等待 client 來建立連線。
+    * server 端要能夠支援同時多人連線的情境。
+    * 連線建立後，會去執行 **sl** 程式並將輸出透過 socket 傳給 client 端。
+    * 在 server 上印出火車的 ID，用建立出的 process id 來表示。
+* Client (助教提供)
+    * 使用 netcat 這隻程式來作為 client 端。
+    * 與 server 建立連線後，接收傳來的資料。
+
+## III. Illustration
+* Server
+    ```bash
+    ./lab5 &lt;port&gt;
+    ```
+    * &lt;port&gt; 為 server listen 的端口。
+* Client
+    ```bash
+    nc &lt;ip&gt; &lt;port&gt;
+    ```
+    * &lt;ip&gt; 為 server 所在的 ip。
+    * &lt;port&gt; 為 server listen 的端口。
+
+## IV. Note
+* socket 與 process 的撰寫請參考 laball.pdf 之 lab 3， 6-2 的範例程式碼。
+* VM 上須安裝 sl, tmux 程式，以利程式正確執行。
+    ```bash
+    sudo apt install sl tmux
+    ```
+* 先ctrl-b，再用指令來關閉已經打開的session(影片最後的步驟)
+    ```
+    :kill-session
+    ```
+* 在執行 sl 程式時，請加上參數 `-l` 以產生出較小的列車。
+    ```bash
+    sl -l
+    ```
+* 在 server 程式碼當中
+    * 請使用 [execlp()](https://linux.die.net/man/3/execlp) 來執行 sl 程式。
+    * 請使用 [dup2()](http://man7.org/linux/man-pages/man2/dup.2.html) system call 將標準輸出重新導向給 socket 的 fd。 
+* 請將下列程式碼加入到你的程式碼當中，來清除執行過程中產生的 zombie process。
+    ```c
+    #include &lt;signal.h&gt;
+    #include &lt;sys/wait.h&gt;
+    
+    void handler(int signum) {
+        while (waitpid(-1, NULL, WNOHANG) &gt; 0);
+    }
+    
+    int main(int argc, char *argv[]) {
+        signal(SIGCHLD, handler);
+    }
+    ```
+
+## V. Demo &amp; Submission
+* 助教會提供 demo.sh 來協助同學測試與 Demo。
+* 助教會透過下列指令檢查同學是否有在系統上留下 zombie process。
+    ```bash
+    ps aux | grep defunct | grep -v grep
+    ```
+* 請將程式碼以下列的格式擺放與命名，以方便助教評分。
+    ```bash
+    &lt;學號&gt;_eos_lab5
+    |-- Makefile
+    |-- lab5.cpp
+    |-- demo.sh    
+    ```
+* 請將上述之資料夾壓縮為單一 zip 檔案，並上傳到 E3 上。
+
+
+# Lab 5 Hints
+
+## I. Preliminaries
+* Review Lab 6-2: Socket Programming and Lab 8: Signal and Timer in laball
+
+## II. dup2 - duplicate a file descriptor
+```c
+#include &lt;stdio.h&gt;  // perror()
+#include &lt;stdlib.h&gt; // exit()
+#include &lt;fcntl.h&gt;  // open()
+#include &lt;unistd.h&gt; // dup2()
+
+int main(int argc, char *argv[]) {	
+	int fd;
+	if ((fd = open(&#34;test.txt&#34;, O_CREAT | O_RDWR, 0644)) == -1) {
+		perror(&#34;open&#34;);
+		exit(EXIT_FAILURE);	
+	}
+	
+	dup2(fd, STDOUT_FILENO);
+	close (fd);
+
+	printf(&#34;Hello, World!\n&#34;);
+	return 0;
+}
+```
+-----
+
+&lt;img src=&#34;https://i.imgur.com/p0viBq0.png&#34; alt=&#34;Girl in a jacket&#34; width=&#34;100%&#34; height=&#34;100%&#34;&gt;
+
+-----
+
+[![asciicast](https://asciinema.org/a/2zGPw2BU35azHObMAGAfydBSm.png)](https://asciinema.org/a/2zGPw2BU35azHObMAGAfydBSm)
+
+
+##  III. sl - display animations
+```bash
+sudo apt install sl
+```
+[![asciicast](https://asciinema.org/a/aOaPI1upcloMqIfhFu7RHdEKC.png)](https://asciinema.org/a/aOaPI1upcloMqIfhFu7RHdEKC)
+
+
+## IV. exec - Execute a file
+* execl, execlp, execv, execvp
+    * int execl(const char *path, const char *arg, ...);
+    * int execlp(const char *file, const char *arg, ...);
+    * int execv(const char *path, char *const argv[]);
+    * int execvp(const char *file, char *const argv[]);
+* Example for execute ls instruction
+```bash
+#include &lt;unistd.h&gt;
+
+int main(int argc, char *argv[]) {
+    execl(&#34;/bin/ls&#34;, &#34;/bin/ls&#34;, &#34;-l&#34;, NULL);
+    
+    execlp(&#34;ls&#34;, &#34;ls&#34;, &#34;-l&#34;, NULL);
+    
+    char *arg1[] = {&#34;/bin/ls&#34;, &#34;-l&#34;, NULL};
+    execv(arg1[0], arg1);
+    
+    char *arg2[] = {&#34;ls&#34;, &#34;-l&#34;, NULL};
+    execvp(arg2[0], arg2);
+}
+```
+
+## V. Zombie process handler
+
+* Example for waiting zombie process
+```bash
+#include &lt;signal.h&gt;   // signal()
+#include &lt;sys/wait.h&gt; // waitpid()
+
+void handler(int signum) {
+    while (waitpid(-1, NULL, WNOHANG) &gt; 0);
+}
+
+int main(int argc, char *argv[]) {
+    signal(SIGCHLD, handler);
+}
+```
+
+## VI. Address already in use
+* Force using socket address already in use
+```c 
+#include &lt;sys/socket.h&gt;
+
+int main(int argc, char *argv[]) {
+    int fd = socket(...);
+    
+    int yes = 1;
+    setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &amp;yes, sizeof(yes));
+    
+    bind(fd, ...)
+}
+```
+
+## VII. Close server socket
+* Close socket when catching SIGINT signal
+```c
+#include &lt;signal.h&gt; // signal()
+#include &lt;unistd.h&gt; // close()
+
+int sockfd;
+
+void handler(int signum) {
+    close(sockfd);
+}
+
+int main(int argc, char *argv[]) {
+    signal(SIGINT, handler);
+}
+```
+
+</div>
+
+    <div class="document-footer container-fluid hmd-pb-2 hidden-print">
+        <hr>
+        <div class="footer hmd-flex hmd-items-center">
+    <div class="footer__published-by hmd-flex-grow-1">
+        <span>發表於</span> <strong><a href="https://hackmd.io/" target="_blank"><i class="fa fa-file-text"></i> <span class="brand">HackMD</span></a></strong>
+    </div>
+    <div class="footer__views" style="margin-right: 18px;">
+        <i class="fa fa-eye"></i> <span class="ui-viewcount">723</span>
+    </div>
+    <div class="footer__views">
+    
+        <span class="community-button ui-like " data-toggle="tooltip" data-placement="top" title="讚賞"><i class="fa fa-fw"></i><span class="text hidden-xs">讚賞</span><span class="count"></span></span>
+        <span class="community-button ui-bookmark " data-toggle="tooltip" data-placement="top" title="收藏"><i class="fa fa-fw"></i><span class="text hidden-xs"><span class="bookmark-label">收藏</span><span class="bookmarked-label">已收藏</span></span></span>
+        
+            <div class="ui-notification dropup dropdown ">
+                <span id="notificationLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div class="community-button"  data-no-email data-toggle="tooltip" data-placement="top" title="訂閱">
+                        <i class="fa fa-fw fa-bell"></i><span class="text hidden-xs">已訂閱<i class="fa fa-fw fa-angle-down"></i><i class="fa fa-fw fa-angle-up"></i></span>
+                    </div>
+                </span>
+                <ul class="dropdown-menu pull-right" aria-labelledby="notificationLabel">
+                    <li class="ui-notification-watch notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-bell fa-fw"></i><div class="info"><div class="title">所有通知</div><div class="description" >當有任何變更時將會收到通知</div></div></li>
+                    <li class="ui-notification-mention notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-at fa-fw"></i><div class="info"><div class="title">提及我</div><div class="description">當有人提及我時才會收到通知</div></div></li>
+                    <li class="divider"></li>
+                    <!--
+                        <li class="ui-notification-list notification-menu-item"><span><a href="#"><i class="fa fa-list-ul fa-fw"></i>我的訂閱列表</a></span></li>
+                    -->
+                    <li class="ui-notification-unsubscribe notification-menu-item"><i class="fa fa-bell-slash-o fa-fw"></i>取消訂閱</li>
+                </ul>
+                <span class="ui-notification-subscribe community-button"><i class="fa fa-fw fa-bell-o"></i><span class="text hidden-xs">訂閱</span></span>
+            </div>
+        
+    
+    </div>
+</div>
+
+    </div>
+
+    <div class="ui-community unselectable hidden-print hidden-xs" style="display: none;">
+        
+            <div class="community-button ui-like " title="讚賞" data-toggle="tooltip" data-placement="right" data-offset="0,5"><i class="fa fa-fw"></i><div class="count"></div></div>
+            <div class="community-button ui-bookmark " title="收藏" data-toggle="tooltip" data-placement="right" data-offset="0,5"><i class="fa fa-fw"></i></div>
+            
+                <div class="ui-notification dropup dropdown " title="訂閱" data-toggle="tooltip" data-placement="right" data-offset="0,5">
+                    <div id="notificationLabel" class="community-button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <div  data-no-email class="ui-notification-status"><i class="fa fa-fw fa-bell"></i></div>
+                    </div>
+                    <ul class="dropdown-menu left" aria-labelledby="notificationLabel">
+                        <li class="ui-notification-watch notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-bell fa-fw"></i><div class="info"><div class="title">所有通知</div><div class="description">當有任何變更時將會收到通知</div></div></li>
+                        <li class="ui-notification-mention notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-at fa-fw"></i><div class="info"><div class="title">提及我</div><div class="description">當有人提及我時才會收到通知</div></div></li>
+                        <li class="divider"></li>
+                        <!--
+                           <li class="ui-notification-list notification-menu-item"><span><a href="#"><i class="fa fa-list-ul fa-fw"></i>我的訂閱列表</a></span></li>
+                        -->
+                        <li class="ui-notification-unsubscribe notification-menu-item"><i class="fa fa-bell-slash-o fa-fw"></i>取消訂閱</li>
+                    </ul>
+                    <div class="ui-notification-subscribe community-button"><i class="fa fa-fw fa-bell-o"></i></div>
+                </div>
+            
+        
+    </div>
+
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-left dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="目錄">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+            </ul>
+        </div>
+    </div>
+
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="display:none;"></div>
+    
+
+    <div class="clearfix"></div>
+
+    <!-- signin modal -->
+<div class="modal fade signin-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 10px; right: 20px; position: absolute;"><span aria-hidden="true">&times;</span></button>
+            
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<h3>登入</h3>
+
+<form data-toggle="validator" role="form" class="form-horizontal" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="hmd-dn"><input type="hidden" name="_csrf" value="IKYuJVgI-r2yJ8VUssv-VBhMKpB7QKM9BTW4"></div>
+    <div class="hmd-dn"><input type="hidden" name="create_team" value="false"></div>
+    <div class="hmd-dn"><input type="hidden" name="create_paid_team" value="false"></div>
+    <div class="form-group  ">
+        <label for="email" class="control-label">Email</label>
+        <label for="inputEmail" class="control-label pull-right errors">
+            
+        </label>
+        <span class="help-block control-label with-errors pull-right" style="display: inline;"></span>
+        <div class="input-block">
+            
+                <input type="email" class="form-control" name="email" placeholder="您的 Email" required autocomplete="email">
+            
+            <span class="error-sign"></span>
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="password" class="control-label">密碼</label>
+        <label for="inputPassword" class="control-label pull-right errors">
+            
+        </label>
+        <span class="help-block control-label with-errors pull-right" style="display: inline;"></span>
+        <div class="input-block">
+            <input type="password" class="form-control" name="password" placeholder="您的密碼" required autocomplete="current-password">
+            <span class="error-sign"></span>
+            
+                <span class="control-label pull-right" style="font-size: 13px; margin-top: 5px;"><a href="https://hackmd.io/settings/forgotPassword" style="text-decoration: underline;">忘記密碼</a></span>
+            
+        </div>
+    </div>
+
+    <div style="text-align: center; padding-top: 15px; margin-bottom: 0px;">
+        
+            <input type="submit" class="btn btn-success btn-large" formaction="https://hackmd.io/login" value="登入">
+        
+
+        
+    </div>
+</form>
+
+
+
+
+
+
+
+
+    
+        <p class="separator">或是</p>
+    
+
+    
+        <p>繼續登入，代表您同意<a href="https://hackmd.io/s/terms" target="_blank">服務條款</a>。</p>
+    
+
+    <div class="social-buttons-container">
+    
+    <a href="https://hackmd.io/auth/facebook" class="btn btn-lg btn-block btn-social btn-facebook">
+        <i class="fa fa-facebook"></i> 透過 Facebook 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/twitter" class="btn btn-lg btn-block btn-social btn-twitter">
+        <i class="fa fa-twitter"></i> 透過 Twitter 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/github" class="btn btn-lg btn-block btn-social btn-github">
+        <i class="fa fa-github"></i> 透過 GitHub 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/dropbox" class="btn btn-lg btn-block btn-social btn-dropbox">
+        <i class="fa fa-dropbox"></i> 透過 Dropbox 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/google" class="btn btn-lg btn-block btn-social btn-google">
+        <i class="icon icon-google"></i> 透過 Google 登入
+    </a>
+    
+    
+    
+</div>
+
+
+
+
+
+    <div >
+        <p>第一次使用 HackMD？ <a href="https://hackmd.io/join">註冊</a></p>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60728495-1"></script>
+<script nonce="fda7981f-7127-4e87-9138-8cc98985d4aa">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    let userid = (document.cookie.match('(^|; )userid=([^;]*)')||0)[2];
+    gtag('config', 'UA-60728495-1', {'user_id': userid});
+</script>
+<script src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js" crossorigin="anonymous"></script>
+<script nonce="fda7981f-7127-4e87-9138-8cc98985d4aa">Sentry.init({ dsn: 'https://73410f1915d84abc8b2dd1f1aabd1c82@sentry.hackmd.dev/4', environment: 'production', integrations: function (intrus) { return intrus.filter(function (itr) { return itr.name !== 'TryCatch' }) } });</script>
+
+
+    
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLW9Z3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+    <script src="https://hackmd.io/api/i18n.js"></script>
+     <script src="https://assets.hackmd.io/build/font-vendor.b287f22511a3b5df90f2.js" defer="defer"></script><script src="https://assets.hackmd.io/build/common-vendor.a6afaa33b9445d028070.js" defer="defer"></script><script src="https://assets.hackmd.io/build/pretty-vendor.fd16cb88af057a8f19d2.js" defer="defer"></script><script src="https://assets.hackmd.io/build/pretty-common.42870335f965b58e4642.js" defer="defer"></script><script src="https://assets.hackmd.io/build/pretty.4a99b9ac86860f363099.js" defer="defer"></script>
+
+    
+
+</body>
+</html>

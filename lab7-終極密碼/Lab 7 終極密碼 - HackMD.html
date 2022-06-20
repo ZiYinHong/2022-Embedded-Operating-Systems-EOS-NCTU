@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="csrf-token" content="hdncriVz-dz6BNRivBoIVWYGdPU5ACD325Cg">
+    
+    
+    <meta name="description" content="  # Lab 7 終極密碼  {%youtube 9w2ofLXbeHA %}  ## I. Introduction    請在 VM 上撰寫終極密碼遊戲。該遊戲由兩份程式組成，第一份程式利用 t">
+    
+    <title>Lab 7 終極密碼 - HackMD</title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+	<link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+    
+<script nonce="73a702a6-9bea-4ebe-9b73-4aadc38d4494">
+  window.domain = 'hackmd.io'
+  window.urlpath = ''
+  window.debug = false
+  window.version = '1.3.0'
+  window.brand = 'HackMD'
+
+  
+  window.NOTE_ID = '3PB6IVVDSy6SeiC9pdWDMw'
+  
+
+  window.GOOGLE_API_KEY = 'AIzaSyCjSrqWHhmWJnoI7JlD88XDSaBgiKbaenA'
+  window.GOOGLE_CLIENT_ID = '911617723593-drikdibvvn63slfd6kbqigo8ql1no55s.apps.googleusercontent.com'
+  window.DROPBOX_APP_KEY = 'rdoizrlnkuha23r'
+  
+  window.PLANTUML_SERVER = 'https://ptuml.hackmd.io'
+
+  window.ASSET_URL = 'https://assets.hackmd.io'
+
+  window.USER_CAN_CREATE_TEAM = true
+  window.USER_CAN_DELETE_ACCOUNT = true
+  window.USER_DELETE_ACCOUNT_VIA_EMAIL = true
+  window.PAYMENT_ENABLED = true
+  window.PAYMENT_PROMOTION_BANNER_ENABLED = true
+  window.GITHUB_SYNC_ENABLED = true
+  window.GITLAB_SYNC_ENABLED = false
+  window.GITLAB_SYNC_BASE_URL = ''
+  window.VCS_SYNC_MODE = 'github'
+  window.VCS_PROVIDER_NAME = 'GitHub'
+  window.FREE_TEAM_NUM = 20
+  window.FREE_TEAM_MEMBER_NUM = 3
+  window.FREE_PUBLIC_TEAM_NUM = 10
+  
+  window.EE_SITE_ENABLE = false
+  window.EE_SITE_NAME = 'false'
+  window.EE_SITE_LINK = 'false'
+  window.EESITE_INFO = false
+  window.ENTERPRISE_DISCOVERY_ENABLE = false
+  window.ENTERPRISE_DISCOVERY_TEAM = true
+  window.ENTERPRISE_DISCOVERY_NOTE = true
+  window.ENTERPRISE_DISCOVERY_VIEW_PERMISSION = 'guest'
+  
+  window.ALLOW_ANONYMOUS = true
+  window.ALLOW_ANONYMOUS_EDIT = false
+  window.PUBLIC_OVERVIEW = false
+  window.INTERNAL_PUBLIC_OVERVIEW = false
+  window.FULL_TEXT_SEARCH_ENABLE = false
+  window.ALGOLIA_SEARCH_ENABLE = true
+  window.MARKETING_EMAIL_ENABLE = true
+  
+  window.API_MANAGEMENT_UI_ENABLE = true
+  window.FEEDBACK_UI_ENABLE = true
+
+  
+  window.SHOW_HOT_NOTES = false
+  
+
+  
+  window.HOT_NOTES_TIME_TYPE = 'week'
+  
+
+  
+  window.SHOW_OVERVIEW = true
+  
+
+  
+  window.MENTIONS = {}
+  
+
+  
+  window.MENTION_ANCHORS = []
+  
+
+  
+  window.COMMENT_ANCHORS = []
+  
+
+  
+  window.IS_OWNER = false
+  
+
+  
+  window.IS_TEAM_ADMIN = false
+  
+
+  
+
+  
+  window.USER_PROFILE = {"name":"ZiYinHong","userpath":"yAVGfncYRQK-fndhvcM47w","photo":"https://avatars.githubusercontent.com/u/44540162?s=96","userid":"c805467e-7718-4502-be7e-7761bdc338ef"}
+  
+
+  
+  window.VERSION_TIME = '1620315746301'
+  
+
+  
+  window.canEdit = true
+  
+
+  
+  window.canWriteComment = false
+  
+</script>
+
+
+    
+<!-- Google Tag Manager -->
+<script nonce="73a702a6-9bea-4ebe-9b73-4aadc38d4494">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KLW9Z3');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+
+
+
+<meta property="fb:app_id" content="1436904003272070">
+
+
+    <meta name="twitter:image:src" content="https://avatars.githubusercontent.com/u/22985279?s=400" />
+
+
+<meta name="twitter:site" content="@hackmdio" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Lab 7 終極密碼 - HackMD" />
+
+
+    <meta name="twitter:description" content="  # Lab 7 終極密碼  {%youtube 9w2ofLXbeHA %}  ## I. Introduction    請在 VM 上撰寫終極密碼遊戲。該遊戲由兩份程式組成，第一份程式利用 t" />
+
+
+
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/22985279?s=400" />
+
+
+<meta property="og:site_name" content="HackMD" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Lab 7 終極密碼 - HackMD" />
+
+
+    <meta property="og:description" content="  # Lab 7 終極密碼  {%youtube 9w2ofLXbeHA %}  ## I. Introduction    請在 VM 上撰寫終極密碼遊戲。該遊戲由兩份程式組成，第一份程式利用 t" />
+
+
+    <link rel="stylesheet" href='https://assets.hackmd.io/build/emojify.js/dist/css/basic/emojify.min.css'>
+     <link href="https://assets.hackmd.io/build/font-vendor.f71b2dd20d2cd4c87735.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/common-vendor.1233bc7a27f833ea4984.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/pretty-vendor.125d4ded35ba0a2fa5e9.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/pretty.bc90fddd83f36f2a76c9.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+<![endif]-->
+
+</head>
+
+<body style="display:none;">
+    <div class="ui-infobar container-fluid unselectable hidden-print">
+        <div class="row">
+            <div class="col-xs-12 ui-infobar-inner">
+                <div class="ui-infobar__user-info">
+                    <ul class="list-inline">
+                        <li>
+                            
+                                <span class="ui-lastchangeuser" data-profile="oKtUv9VYSE-OcMCmiCSc7Q">&thinsp;<a class="ui-user-icon small" style="background-image: url(https://lh6.googleusercontent.com/-HFXbZnVwrA4/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckrv7avrxFYfVeyaQIe89qHNkohtw/s96-c/photo.jpg);" target="_blank"></a></span>
+                            
+                            &nbsp;<span class="text-uppercase ui-status-lastchange"></span>
+                            <span class="ui-lastchange text-uppercase" data-createtime="Thu Apr 30 2020 14:32:20 GMT+0000 (Coordinated Universal Time)" data-updatetime="Thu May 06 2021 15:42:26 GMT+0000 (Coordinated Universal Time)"></span>
+                        </li>
+                        
+                            <li>
+                                <span class="ui-owner" data-profile="shoulderhu">
+                                    &thinsp;<a class="ui-user-icon small" style="background-image: url(https://avatars.githubusercontent.com/u/22985279?s=96);" target="_blank"></a>
+                                    &nbsp;<span class="text-uppercase">擁有這篇筆記</span>
+                                </span>
+                            </li>
+                        
+                        
+                        <li>
+                            <span class="ui-more-info hmd-dn" data-toggle="popover">
+                                &thinsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
+
+                                <div class="more-info-raw hmd-dn">
+                                    <span class="ui-published-note note-status-row hmd-dn">
+                                        <i class="fa fa-globe" aria-hidden="true" style="margin-top: 1px;"></i>
+                                        公開筆記
+                                    </span>
+
+                                    <span class="ui-connectedGithub note-status-row hmd-dn">
+                                        <i class="fa fa-20 ui-connectedGithubIcon fa-github"></i>
+
+                                        <span>與 GitHub 同步</span>
+
+                                        <br>
+
+                                        <a class="file-path" target="_blank"></a>
+                                    </span>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hmd-text-right ui-infobar__actions">
+                    <ul class="list-inline">
+                        <li>
+                            
+                                <span class="community-button ui-like hidden-xs "  data-toggle="tooltip" data-placement="bottom" title="讚賞"><i class="fa fa-fw"></i><span class="text">讚賞</span><span class="count"></span></span>
+                                <span class="community-button ui-bookmark  hidden-xs" data-toggle="tooltip" data-placement="bottom" title="收藏"><i class="fa fa-fw"></i><span class="text"><span class="bookmark-label">收藏</span><span class="bookmarked-label">已收藏</span></span></span>
+                                
+                                    <div class="ui-notification dropdown ">
+                                        <span id="notificationLabel" class="ui--subscribed hidden-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <div  data-no-email class="ui-notification-status community-button" data-toggle="tooltip" data-placement="bottom" title="訂閱">
+                                                <i class="fa fa-fw fa-bell"></i><span class="text">已訂閱<i class="fa fa-fw fa-angle-down"></i><i class="fa fa-fw fa-angle-up"></i></span>
+                                            </div>
+                                        </span>
+                                        <ul class="dropdown-menu" aria-labelledby="notificationLabel">
+                                            <li class="ui-notification-watch notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-bell fa-fw"></i><div class="info"><div class="title">所有通知</div><div class="description">當有任何變更時將會收到通知</div></div></li>
+                                            <li class="ui-notification-mention notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-at fa-fw"></i><div class="info"><div class="title">提及我</div><div class="description">當有人提及我時才會收到通知</div></div></li>
+                                            <li class="divider"></li>
+                                            <!--
+                                                <li class="ui-notification-list notification-menu-item"><span><a href="#"><i class="fa fa-list-ul fa-fw"></i>我的訂閱列表</a></span></li>
+                                            -->
+                                            <li class="ui-notification-unsubscribe notification-menu-item"><i class="fa fa-bell-slash-o fa-fw"></i>取消訂閱</li>
+                                        </ul>
+                                        <span class="ui-notification-subscribe community-button hidden-xs"><i class="fa fa-fw fa-bell-o"></i><span class="text">訂閱</span></span>
+                                    </div>
+                                
+                            
+                        </li>
+                        
+                            <li>
+                                <a href="#" class="ui-edit btn btn-default btn-md"><i class="fa fa-pencil"></i> <span class="hidden-xs" style="margin-left: 3px">編輯</span></a>
+                            </li>
+                        
+                    </ul>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Markdown rendered container -->
+    <div id="doc" class="container-fluid markdown-body" data-hard-breaks="true">---
+tags: EOS
+---
+
+# Lab 7 終極密碼
+
+{%youtube 9w2ofLXbeHA %}
+
+## I. Introduction
+   請在 VM 上撰寫終極密碼遊戲。該遊戲由兩份程式組成，第一份程式利用 timer，每格一秒做猜數字的動作，用 signal 通知第二份程式，其會將被猜的數字讀進來，並給出猜中了、太大、太小這三種回應。兩隻程式透過 shared memory 做資料傳出的動作。
+
+## II. Specification
+* Game 程式 (**自行撰寫**)
+    * 取得 shared memory 的定址空間。
+    * shared memory 除存的資料格式如下：
+        ```c
+        typedef struct {
+            int guess;
+            char result[8];
+        }data;
+        ```
+    * Guess 程式使用 **SIGUSR1** 信號來通知 Game 程式做數值上的判斷（太大、大小、猜中）。
+    * 撰寫 **SIGUSR1** handler function，將 shared memory 中的 guess 變數與被猜的數字做比較，並將結果寫回 result 變數當中，最後發送 **SIGUSR1** 信號給 Guess 程式表示判斷完成。
+* Guess 程式 (**自行撰寫**)
+    * 取得 shared memory 的定址空間。
+    * 本程式使用 **對半猜(二分搜)** 的方式來做猜測的動作。
+    * Game 程式使用 **SIGUSR1** 信號來通知 Game 程式去接收判斷結果。
+    * 撰寫 **SIGUSR1** handler function，讀取 result 變數的結果，並更新猜測的數值範圍。
+    * 撰寫 timer，每秒會將該回合要猜的數字寫入 guess 變數當中，並用 **SIGUSR1** 通知 Game 程式處理。
+
+## III. Illustration
+* Game 程式
+    ```bash
+    ./game &lt;key&gt; &lt;guess&gt;
+    ```
+    * &lt;key&gt; 為 shared memory 的識別 key，同一個 key 將會指向相同的 shared memroy。
+    * &lt;guess&gt; 為被猜的數值。
+* Guess 程式
+    ```bash
+    ./guess &lt;key&gt; &lt;upper_bound&gt; &lt;pid&gt;
+    ```
+    * &lt;key&gt; 為 shared memory 的識別 key
+    * &lt;upper_bound&gt; 為猜測數值之最大值，以 100 為例，猜測的範圍即為 1 - 100
+    * &lt;pid&gt; 為 game 程式的 process id    
+
+## IV. Note
+* shared memory 的撰寫請參考 pdf 上 lab 5 的範例程式碼。
+* timer, signal 的撰寫請參考 pdf 上 lab 8 的範例程式碼。
+* 為了避免程式直接退出，請使用 **nanosleep()** 來做 blocking 的動作，寫法請參考 pdf 上 lab 8 的範例程式碼。
+* 請在 Game 程式結束時 (Ctrl + C)，請將建立出來的 shared memory 給清除。
+
+## V. Demo &amp; Submission
+* 助教有提供 demo.sh 來協助同學測試與 Demo。
+* 助教會透過下列指令檢查同學是否有在系統上留下 shared memroy。
+    ```bash
+    ipcs -m
+    ```
+* 請將程式碼以下列的格式擺放與命名，以方便助教評分。
+    ```bash
+    0866007_eos_lab7
+    |-- Makefile
+    |-- game.cpp
+    |-- guess.cpp
+    |-- demo.sh    
+    ```
+* 請將上述之資料夾壓縮為單一 zip 檔案，並上傳到 E3 上。
+
+
+</div>
+
+    <div class="document-footer container-fluid hmd-pb-2 hidden-print">
+        <hr>
+        <div class="footer hmd-flex hmd-items-center">
+    <div class="footer__published-by hmd-flex-grow-1">
+        <span>發表於</span> <strong><a href="https://hackmd.io/" target="_blank"><i class="fa fa-file-text"></i> <span class="brand">HackMD</span></a></strong>
+    </div>
+    <div class="footer__views" style="margin-right: 18px;">
+        <i class="fa fa-eye"></i> <span class="ui-viewcount">295</span>
+    </div>
+    <div class="footer__views">
+    
+        <span class="community-button ui-like " data-toggle="tooltip" data-placement="top" title="讚賞"><i class="fa fa-fw"></i><span class="text hidden-xs">讚賞</span><span class="count"></span></span>
+        <span class="community-button ui-bookmark " data-toggle="tooltip" data-placement="top" title="收藏"><i class="fa fa-fw"></i><span class="text hidden-xs"><span class="bookmark-label">收藏</span><span class="bookmarked-label">已收藏</span></span></span>
+        
+            <div class="ui-notification dropup dropdown ">
+                <span id="notificationLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div class="community-button"  data-no-email data-toggle="tooltip" data-placement="top" title="訂閱">
+                        <i class="fa fa-fw fa-bell"></i><span class="text hidden-xs">已訂閱<i class="fa fa-fw fa-angle-down"></i><i class="fa fa-fw fa-angle-up"></i></span>
+                    </div>
+                </span>
+                <ul class="dropdown-menu pull-right" aria-labelledby="notificationLabel">
+                    <li class="ui-notification-watch notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-bell fa-fw"></i><div class="info"><div class="title">所有通知</div><div class="description" >當有任何變更時將會收到通知</div></div></li>
+                    <li class="ui-notification-mention notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-at fa-fw"></i><div class="info"><div class="title">提及我</div><div class="description">當有人提及我時才會收到通知</div></div></li>
+                    <li class="divider"></li>
+                    <!--
+                        <li class="ui-notification-list notification-menu-item"><span><a href="#"><i class="fa fa-list-ul fa-fw"></i>我的訂閱列表</a></span></li>
+                    -->
+                    <li class="ui-notification-unsubscribe notification-menu-item"><i class="fa fa-bell-slash-o fa-fw"></i>取消訂閱</li>
+                </ul>
+                <span class="ui-notification-subscribe community-button"><i class="fa fa-fw fa-bell-o"></i><span class="text hidden-xs">訂閱</span></span>
+            </div>
+        
+    
+    </div>
+</div>
+
+    </div>
+
+    <div class="ui-community unselectable hidden-print hidden-xs" style="display: none;">
+        
+            <div class="community-button ui-like " title="讚賞" data-toggle="tooltip" data-placement="right" data-offset="0,5"><i class="fa fa-fw"></i><div class="count"></div></div>
+            <div class="community-button ui-bookmark " title="收藏" data-toggle="tooltip" data-placement="right" data-offset="0,5"><i class="fa fa-fw"></i></div>
+            
+                <div class="ui-notification dropup dropdown " title="訂閱" data-toggle="tooltip" data-placement="right" data-offset="0,5">
+                    <div id="notificationLabel" class="community-button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <div  data-no-email class="ui-notification-status"><i class="fa fa-fw fa-bell"></i></div>
+                    </div>
+                    <ul class="dropdown-menu left" aria-labelledby="notificationLabel">
+                        <li class="ui-notification-watch notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-bell fa-fw"></i><div class="info"><div class="title">所有通知</div><div class="description">當有任何變更時將會收到通知</div></div></li>
+                        <li class="ui-notification-mention notification-menu-item "><i class="fa fa-check fa-fw"></i><i class="fa fa-at fa-fw"></i><div class="info"><div class="title">提及我</div><div class="description">當有人提及我時才會收到通知</div></div></li>
+                        <li class="divider"></li>
+                        <!--
+                           <li class="ui-notification-list notification-menu-item"><span><a href="#"><i class="fa fa-list-ul fa-fw"></i>我的訂閱列表</a></span></li>
+                        -->
+                        <li class="ui-notification-unsubscribe notification-menu-item"><i class="fa fa-bell-slash-o fa-fw"></i>取消訂閱</li>
+                    </ul>
+                    <div class="ui-notification-subscribe community-button"><i class="fa fa-fw fa-bell-o"></i></div>
+                </div>
+            
+        
+    </div>
+
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-left dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="目錄">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+            </ul>
+        </div>
+    </div>
+
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="display:none;"></div>
+    
+
+    <div class="clearfix"></div>
+
+    <!-- signin modal -->
+<div class="modal fade signin-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 10px; right: 20px; position: absolute;"><span aria-hidden="true">&times;</span></button>
+            
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<h3>登入</h3>
+
+<form data-toggle="validator" role="form" class="form-horizontal" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="hmd-dn"><input type="hidden" name="_csrf" value="hdncriVz-dz6BNRivBoIVWYGdPU5ACD325Cg"></div>
+    <div class="hmd-dn"><input type="hidden" name="create_team" value="false"></div>
+    <div class="hmd-dn"><input type="hidden" name="create_paid_team" value="false"></div>
+    <div class="form-group  ">
+        <label for="email" class="control-label">Email</label>
+        <label for="inputEmail" class="control-label pull-right errors">
+            
+        </label>
+        <span class="help-block control-label with-errors pull-right" style="display: inline;"></span>
+        <div class="input-block">
+            
+                <input type="email" class="form-control" name="email" placeholder="您的 Email" required autocomplete="email">
+            
+            <span class="error-sign"></span>
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="password" class="control-label">密碼</label>
+        <label for="inputPassword" class="control-label pull-right errors">
+            
+        </label>
+        <span class="help-block control-label with-errors pull-right" style="display: inline;"></span>
+        <div class="input-block">
+            <input type="password" class="form-control" name="password" placeholder="您的密碼" required autocomplete="current-password">
+            <span class="error-sign"></span>
+            
+                <span class="control-label pull-right" style="font-size: 13px; margin-top: 5px;"><a href="https://hackmd.io/settings/forgotPassword" style="text-decoration: underline;">忘記密碼</a></span>
+            
+        </div>
+    </div>
+
+    <div style="text-align: center; padding-top: 15px; margin-bottom: 0px;">
+        
+            <input type="submit" class="btn btn-success btn-large" formaction="https://hackmd.io/login" value="登入">
+        
+
+        
+    </div>
+</form>
+
+
+
+
+
+
+
+
+    
+        <p class="separator">或是</p>
+    
+
+    
+        <p>繼續登入，代表您同意<a href="https://hackmd.io/s/terms" target="_blank">服務條款</a>。</p>
+    
+
+    <div class="social-buttons-container">
+    
+    <a href="https://hackmd.io/auth/facebook" class="btn btn-lg btn-block btn-social btn-facebook">
+        <i class="fa fa-facebook"></i> 透過 Facebook 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/twitter" class="btn btn-lg btn-block btn-social btn-twitter">
+        <i class="fa fa-twitter"></i> 透過 Twitter 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/github" class="btn btn-lg btn-block btn-social btn-github">
+        <i class="fa fa-github"></i> 透過 GitHub 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/dropbox" class="btn btn-lg btn-block btn-social btn-dropbox">
+        <i class="fa fa-dropbox"></i> 透過 Dropbox 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/google" class="btn btn-lg btn-block btn-social btn-google">
+        <i class="icon icon-google"></i> 透過 Google 登入
+    </a>
+    
+    
+    
+</div>
+
+
+
+
+
+    <div >
+        <p>第一次使用 HackMD？ <a href="https://hackmd.io/join">註冊</a></p>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60728495-1"></script>
+<script nonce="73a702a6-9bea-4ebe-9b73-4aadc38d4494">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    let userid = (document.cookie.match('(^|; )userid=([^;]*)')||0)[2];
+    gtag('config', 'UA-60728495-1', {'user_id': userid});
+</script>
+<script src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js" crossorigin="anonymous"></script>
+<script nonce="73a702a6-9bea-4ebe-9b73-4aadc38d4494">Sentry.init({ dsn: 'https://73410f1915d84abc8b2dd1f1aabd1c82@sentry.hackmd.dev/4', environment: 'production', integrations: function (intrus) { return intrus.filter(function (itr) { return itr.name !== 'TryCatch' }) } });</script>
+
+
+    
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLW9Z3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+    <script src="https://hackmd.io/api/i18n.js"></script>
+     <script src="https://assets.hackmd.io/build/font-vendor.b287f22511a3b5df90f2.js" defer="defer"></script><script src="https://assets.hackmd.io/build/common-vendor.a6afaa33b9445d028070.js" defer="defer"></script><script src="https://assets.hackmd.io/build/pretty-vendor.fd16cb88af057a8f19d2.js" defer="defer"></script><script src="https://assets.hackmd.io/build/pretty-common.42870335f965b58e4642.js" defer="defer"></script><script src="https://assets.hackmd.io/build/pretty.4a99b9ac86860f363099.js" defer="defer"></script>
+
+    
+
+</body>
+</html>
