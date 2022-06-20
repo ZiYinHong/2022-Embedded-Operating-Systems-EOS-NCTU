@@ -1,7 +1,7 @@
 # 1102-Embedded-Operating-Systems-EOS-NYCU
 1102 Embedded Operating Systems(EOS) 嵌入式作業系統 HW @ NYCU 
 
-=====================================================================================
+============================================================================
 ### HW pages
 homework demand html pages are in each hw folder
 
@@ -45,7 +45,8 @@ homework demand html pages are in each hw folder
 
 + **Group Final project**
   貪吃蛇
-=====================================================================================
+
+============================================================================
 ### Environment & Equipments
 #### C/C++
 #### Ubuntu 18.04 (VirtualBox VM)
