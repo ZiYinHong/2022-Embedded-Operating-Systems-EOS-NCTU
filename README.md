@@ -43,6 +43,8 @@ homework demand html pages are in each hw folder
   socket, thread, mutex, signal.<br>
   https://youtu.be/kF2AtskDHwA
 
++ **Group Final project**
+  貪吃蛇
 =====================================================================================
 ### Environment & Equipments
 #### C/C++
